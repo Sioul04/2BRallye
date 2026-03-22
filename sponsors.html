@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sponsors — 2B Rallye Team</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <meta name="description" content="Devenez partenaire de la 2B Rallye Team pour la saison 2026." />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Sponsors — 2B Rallye Team" />
+  <meta property="og:description" content="Devenez partenaire de la 2B Rallye Team — visibilite sur les epreuves du Championnat Regional Rhone-Alpes 2026." />
+  <meta property="og:image" content="logo.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#040405" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Exo+2:ital,wght@0,300;0,400;0,700;0,900;1,400&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+
+  <style>
+    /* ════════════════════════════════════════
+       SPONSORS — styles spécifiques à la page
+       ════════════════════════════════════════ */
+
+    /* ── Intro texte ── */
+    .intro-block {
+      max-width: 720px;
+    }
+    .intro-block p {
+      color: var(--c-text-mute);
+      font-size: 1.05rem;
+      line-height: 1.85;
+    }
+    .intro-block p + p {
+      margin-top: 1.25rem;
+    }
+
+    /* ── Chiffres clés ── */
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1.25rem;
+      margin-top: 3rem;
+    }
+    .impact-card {
+      background: var(--c-surface);
+      border: 1px solid var(--c-border);
+      border-radius: var(--r-md);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: border-color .3s, transform .3s var(--ease-out);
+    }
+    .impact-card:hover {
+      border-color: rgba(230,57,70,.3);
+      transform: translateY(-3px);
+    }
+    .impact-num {
+      display: block;
+      font-family: var(--font-heading);
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--c-accent);
+      line-height: 1;
+      margin-bottom: .5rem;
+    }
+    .impact-label {
+      color: var(--c-text-mute);
+      font-size: .8rem;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+    }
+
+    /* ── Bénéfices ── */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .benefit-card {
+      background: var(--c-surface);
+      border: 1px solid var(--c-border);
+      border-radius: var(--r-md);
+      padding: 2rem 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: .9rem;
+      transition: border-color .3s, transform .3s var(--ease-out);
+    }
+    .benefit-card:hover {
+      border-color: rgba(230,57,70,.3);
+      transform: translateY(-4px);
+    }
+    .benefit-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      background: rgba(230,57,70,.1);
+      border: 1px solid rgba(230,57,70,.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+    }
+    .benefit-title {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--c-white);
+    }
+    .benefit-text {
+      color: var(--c-text-mute);
+      font-size: .875rem;
+      line-height: 1.7;
+    }
+
+    /* ── Formules ── */
+    .packages-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+      align-items: start;
+    }
+    .package-card {
+      background: var(--c-surface);
+      border: 1px solid var(--c-border);
+      border-radius: var(--r-lg);
+      padding: 2.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+      transition: transform .3s var(--ease-out), box-shadow .3s;
+    }
+    .package-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 56px rgba(0,0,0,.35);
+    }
+
+    /* Carte mise en avant (Argent) */
+    .package-card.featured {
+      border-color: var(--c-accent);
+      background: linear-gradient(145deg, var(--c-surface) 0%, rgba(230,57,70,.06) 100%);
+    }
+
+    .pkg-tier {
+      font-family: var(--font-heading);
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--c-accent);
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+    }
+    /* Badge "Recommandé" intégré au tier sur la carte featured */
+    .package-card.featured .pkg-tier::after {
+      content: 'Recommande';
+      background: var(--c-accent);
+      color: #fff;
+      font-size: .58rem;
+      padding: .2rem .55rem;
+      border-radius: 20px;
+      letter-spacing: .08em;
+    }
+
+    .pkg-name {
+      font-family: 'StationRace', var(--font-heading);
+      font-size: 2.2rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--c-white);
+      line-height: 1;
+    }
+    .package-card.featured .pkg-name {
+      color: var(--c-accent);
+    }
+
+    .pkg-desc {
+      color: var(--c-text-mute);
+      font-size: .875rem;
+      line-height: 1.65;
+    }
+
+    .pkg-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .6rem;
+      padding-top: 1.1rem;
+      border-top: 1px solid var(--c-border);
+      flex: 1;
+    }
+    .pkg-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: .55rem;
+      font-size: .875rem;
+      color: var(--c-text-mute);
+    }
+    .pkg-features li::before {
+      content: '✓';
+      color: var(--c-accent);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: .05em;
+    }
+
+    .pkg-cta {
+      margin-top: .5rem;
+    }
+
+    /* Note sous les formules */
+    .packages-note {
+      text-align: center;
+      color: var(--c-text-mute);
+      font-size: .875rem;
+      margin-top: 2rem;
+      font-style: italic;
+    }
+
+    /* ── Logos sponsors ── */
+    .sponsors-slots {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+      gap: 1rem;
+      margin-top: 3rem;
+    }
+    .sponsor-slot {
+      background: var(--c-surface);
+      border: 1.5px dashed rgba(255,255,255,.08);
+      border-radius: var(--r-md);
+      aspect-ratio: 2/1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: .5rem;
+      color: var(--c-text-mute);
+      font-size: .75rem;
+      font-family: var(--font-heading);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      transition: border-color .3s, transform .3s var(--ease-out);
+    }
+    .sponsor-slot:hover {
+      border-color: rgba(230,57,70,.3);
+      transform: translateY(-3px);
+    }
+    .sponsor-slot-icon {
+      font-size: 1.4rem;
+      opacity: .25;
+    }
+
+    /* ── Responsive formules ── */
+    @media (max-width: 900px) {
+      .packages-grid { grid-template-columns: 1fr; max-width: 480px; margin-inline: auto; }
+    }
+    @media (max-width: 600px) {
+      .benefits-grid { grid-template-columns: 1fr; }
+      .impact-grid   { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- SVG filter definitions — grit wipe menu -->
+<svg class="svg-defs" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id="grit-filter" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.014" numOctaves="4" seed="3" stitchTiles="stitch" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="140" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+</svg>
+
+<!-- ============================================================
+     NAVIGATION — identique a index.html
+============================================================ -->
+<header id="site-header">
+  <a href="index.html" class="pf-logo" aria-label="Accueil">
+    <img src="logo.svg" alt="2B Rallye Team" />
+  </a>
+  <button class="pf-burger" id="pf-burger" aria-label="Ouvrir le menu" aria-expanded="false">
+    <span class="burger-line"></span>
+    <span class="burger-line"></span>
+  </button>
+</header>
+
+<!-- Menu overlay plein ecran -->
+<div class="pf-menu-overlay" id="pf-menu" aria-hidden="true">
+  <div class="grit-wipe-wrap" aria-hidden="true">
+    <div class="grit-wipe"></div>
+  </div>
+  <nav class="pf-menu-inner">
+    <ul class="pf-menu-links">
+      <li><a href="index.html"        class="pf-mlink" data-idx="1">Accueil</a></li>
+      <li><a href="index.html#team"   class="pf-mlink" data-idx="2">Equipe</a></li>
+      <li><a href="index.html#saison" class="pf-mlink" data-idx="3">Saison 2026</a></li>
+      <li><a href="sponsors.html"     class="pf-mlink" data-idx="4">Sponsors</a></li>
+      <li><a href="boutique.html"     class="pf-mlink" data-idx="5">Boutique</a></li>
+      <li><a href="contact.html"      class="pf-mlink" data-idx="6">Contact</a></li>
+    </ul>
+    <div class="pf-menu-footer">
+      <span>Saison 2026 — Championnat Rhone-Alpes</span>
+    </div>
+  </nav>
+</div>
+
+<!-- ============================================================
+     PAGE HERO
+============================================================ -->
+<header class="page-hero">
+  <div class="container page-hero-content">
+    <span class="section-tag">Partenariats</span>
+    <h1 class="page-title">Devenez<br/><span class="accent">Partenaire</span></h1>
+  </div>
+</header>
+
+<!-- ============================================================
+     INTRO + CHIFFRES CLES
+============================================================ -->
+<section class="page-section">
+  <div class="container">
+
+    <div class="intro-block">
+      <div class="section-header" style="text-align:left; margin-bottom: 2rem;">
+        <span class="section-tag">L'opportunite</span>
+        <h2 class="section-title">Votre marque au coeur<br/>de l'action</h2>
+      </div>
+      <p>
+        La <strong style="color:var(--c-white)">2B Rallye Team</strong> vous invite a
+        partager l'aventure de la competition automobile sur les routes les plus spectaculaires
+        des Alpes. En devenant partenaire, votre marque s'associe a des valeurs de
+        <em style="color:var(--c-accent2)">performance, de rigueur et de depassement de soi</em>.
+      </p>
+      <p>
+        Sur 5 rallyes au calendrier 2026 — de Faverges aux Bauges en passant par Chartreuse et
+        le Trieves — l'equipe parcourt <strong style="color:var(--c-white)">plus de 277 km
+        chronometres</strong> sous les yeux du public et des medias regionaux.
+        Une visibilite terrain unique, completee par une presence digitale active sur les
+        reseaux sociaux.
+      </p>
+    </div>
+
+    <!-- Chiffres cles -->
+    <div class="impact-grid reveal" data-delay="1">
+      <div class="impact-card">
+        <span class="impact-num">5</span>
+        <span class="impact-label">Rallyes 2026</span>
+      </div>
+      <div class="impact-card">
+        <span class="impact-num">277+</span>
+        <span class="impact-label">km chronometres</span>
+      </div>
+      <div class="impact-card">
+        <span class="impact-num">5</span>
+        <span class="impact-label">Departements</span>
+      </div>
+      <div class="impact-card">
+        <span class="impact-num">2</span>
+        <span class="impact-label">Championnats</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     BENEFICES
+============================================================ -->
+<section class="page-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">Pourquoi nous rejoindre</span>
+      <h2 class="section-title">Ce que nous offrons</h2>
+    </div>
+
+    <div class="benefits-grid">
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">🏎️</div>
+        <h3 class="benefit-title">Visibilite voiture</h3>
+        <p class="benefit-text">Votre logo appose sur la voiture de competition, visible sur les speciales, lors des reconnaissances et au parc d'assistance.</p>
+      </div>
+      <div class="benefit-card reveal" data-delay="1">
+        <div class="benefit-icon">📸</div>
+        <h3 class="benefit-title">Medias et Reseaux</h3>
+        <p class="benefit-text">Photos professionnelles, videos embarquees et stories depuis l'habitacle. Publication reguliere sur tous nos reseaux sociaux.</p>
+      </div>
+      <div class="benefit-card reveal" data-delay="2">
+        <div class="benefit-icon">👕</div>
+        <h3 class="benefit-title">Equipement equipe</h3>
+        <p class="benefit-text">Logo sur les combinaisons, casques, polos et vetements officiels portes lors de toutes les epreuves et en dehors.</p>
+      </div>
+      <div class="benefit-card reveal" data-delay="3">
+        <div class="benefit-icon">🌐</div>
+        <h3 class="benefit-title">Site web officiel</h3>
+        <p class="benefit-text">Votre logo et lien presents sur ce site, espace partenaires mis en avant sur la page Sponsors avec redirection vers votre site.</p>
+      </div>
+      <div class="benefit-card reveal" data-delay="4">
+        <div class="benefit-icon">🏆</div>
+        <h3 class="benefit-title">Presence podium</h3>
+        <p class="benefit-text">Association a vos couleurs lors des remises de prix, interviews et couvertures presse locales et regionales.</p>
+      </div>
+      <div class="benefit-card reveal" data-delay="5">
+        <div class="benefit-icon">🤝</div>
+        <h3 class="benefit-title">Experiences VIP</h3>
+        <p class="benefit-text">Invitation aux evenements, passage au parc d'assistance, rencontre avec l'equipe, baptemes co-pilotage selon formule.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FORMULES
+============================================================ -->
+<section class="page-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">Formules</span>
+      <h2 class="section-title">Choisissez votre niveau<br/>d'engagement</h2>
+      <p class="section-lead">Des packages adaptes a toutes les tailles d'entreprise, personnalisables selon vos besoins.</p>
+    </div>
+
+    <div class="packages-grid">
+
+      <!-- Bronze -->
+      <div class="package-card reveal">
+        <span class="pkg-tier">Formule</span>
+        <h3 class="pkg-name">Bronze</h3>
+        <p class="pkg-desc">Premiere association avec l'equipe et visibilite locale ciblee.</p>
+        <ul class="pkg-features">
+          <li>Logo sur le site officiel</li>
+          <li>Mention sur les reseaux sociaux</li>
+          <li>Logo sur tenue d'equipe (petit format)</li>
+          <li>2 invitations aux epreuves</li>
+        </ul>
+        <a href="contact.html" class="btn btn-outline pkg-cta">Nous contacter</a>
+      </div>
+
+      <!-- Argent — mis en avant -->
+      <div class="package-card featured reveal" data-delay="1">
+        <span class="pkg-tier">Formule</span>
+        <h3 class="pkg-name">Argent</h3>
+        <p class="pkg-desc">Partenariat complet avec visibilite maximale sur tous les supports.</p>
+        <ul class="pkg-features">
+          <li>Logo voiture (flancs + capot)</li>
+          <li>Site web — espace premium</li>
+          <li>Posts dedies reseaux sociaux</li>
+          <li>Tenue equipe — format standard</li>
+          <li>4 invitations + visite parc assistance</li>
+          <li>Photos et videos branding incluses</li>
+        </ul>
+        <a href="contact.html" class="btn btn-primary pkg-cta">Nous contacter</a>
+      </div>
+
+      <!-- Or -->
+      <div class="package-card reveal" data-delay="2">
+        <span class="pkg-tier">Formule</span>
+        <h3 class="pkg-name">Or</h3>
+        <p class="pkg-desc">Partenaire titre — votre marque au premier plan sur toute la saison.</p>
+        <ul class="pkg-features">
+          <li>Logo voiture — emplacement principal</li>
+          <li>Naming possible sur l'equipe</li>
+          <li>Site web — logo en header</li>
+          <li>Couverture complete reseaux sociaux</li>
+          <li>Combinaisons + casques personnalises</li>
+          <li>Acces illimite + bapteme co-pilotage</li>
+          <li>Communique presse co-signe</li>
+        </ul>
+        <a href="contact.html" class="btn btn-outline pkg-cta">Nous contacter</a>
+      </div>
+
+    </div>
+
+    <p class="packages-note reveal" data-delay="3">
+      Toutes les formules sont personnalisables. N'hesitez pas a nous soumettre une proposition sur-mesure.
+    </p>
+  </div>
+</section>
+
+<!-- ============================================================
+     ESPACE LOGOS SPONSORS
+============================================================ -->
+<section class="page-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">Nos partenaires</span>
+      <h2 class="section-title">Ils nous font confiance</h2>
+      <p class="section-lead">
+        Votre logo pourrait figurer ici des la saison 2026.
+      </p>
+    </div>
+
+    <div class="sponsors-slots">
+      <div class="sponsor-slot reveal">
+        <span class="sponsor-slot-icon">🏢</span>
+        <span>Votre logo</span>
+      </div>
+      <div class="sponsor-slot reveal" data-delay="1">
+        <span class="sponsor-slot-icon">🏢</span>
+        <span>Votre logo</span>
+      </div>
+      <div class="sponsor-slot reveal" data-delay="2">
+        <span class="sponsor-slot-icon">🏢</span>
+        <span>Votre logo</span>
+      </div>
+      <div class="sponsor-slot reveal" data-delay="3">
+        <span class="sponsor-slot-icon">🏢</span>
+        <span>Votre logo</span>
+      </div>
+      <div class="sponsor-slot reveal" data-delay="4">
+        <span class="sponsor-slot-icon">🏢</span>
+        <span>Votre logo</span>
+      </div>
+      <div class="sponsor-slot reveal" data-delay="5">
+        <span class="sponsor-slot-icon">🏢</span>
+        <span>Votre logo</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CTA CONTACT
+============================================================ -->
+<section class="section-cta reveal">
+  <div class="container">
+    <div class="cta-inner">
+      <span class="section-tag">Pret a rejoindre l'aventure ?</span>
+      <h2>Parlons de votre projet</h2>
+      <p>Remplissez notre formulaire de contact et nous vous repondrons dans les 48h pour discuter d'un partenariat adapte a vos objectifs.</p>
+      <a href="contact.html" class="btn btn-primary btn-lg">Nous contacter</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer id="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="logo.svg" alt="Logo Equipe" />
+        <p>Equipe de rallye Rhone-Alpes<br/>Saison 2026</p>
+      </div>
+      <nav class="footer-nav" aria-label="Navigation pied de page">
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="index.html#team">Equipe</a></li>
+          <li><a href="index.html#saison">Saison 2026</a></li>
+          <li><a href="sponsors.html">Sponsors</a></li>
+          <li><a href="boutique.html">Boutique</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram" class="social-link">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </a>
+        <a href="#" aria-label="Facebook" class="social-link">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 2B Rallye Team. Tous droits reserves.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>

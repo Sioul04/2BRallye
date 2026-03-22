@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — 2B Rallye Team</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <meta name="description" content="Contactez la 2B Rallye Team — partenariats, presse, fan mail." />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Contact — 2B Rallye Team" />
+  <meta property="og:description" content="Contactez la 2B Rallye Team — partenariats, presse, messages de soutien pour Enzo Belda et Louis-Valentin Barbotin." />
+  <meta property="og:image" content="logo.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#040405" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Exo+2:ital,wght@0,300;0,400;0,700;0,900;1,400&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+
+  <style>
+    /* ════════════════════════════════════════
+       CONTACT — styles spécifiques à la page
+       ════════════════════════════════════════ */
+
+    /* ── Layout deux colonnes ── */
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    /* ── En-tête de colonne formulaire ── */
+    .form-header {
+      text-align: left;
+      margin-bottom: 2.5rem;
+    }
+    .form-header .section-title {
+      margin-bottom: .75rem;
+    }
+    .form-header p {
+      color: var(--c-text-mute);
+      font-size: .95rem;
+      line-height: 1.75;
+    }
+
+    /* ── Formulaire ── */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+    }
+
+    .form-label {
+      font-family: var(--font-heading);
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--c-text-mute);
+    }
+    .form-label .required { color: var(--c-accent); }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+      background: var(--c-surface);
+      border: 1px solid var(--c-border);
+      border-radius: var(--r-sm);
+      padding: .85rem 1.1rem;
+      color: var(--c-text);
+      font-family: var(--font-body);
+      font-size: .95rem;
+      transition: border-color .2s, box-shadow .2s;
+      outline: none;
+      width: 100%;
+    }
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      border-color: var(--c-accent);
+      box-shadow: 0 0 0 3px rgba(230,57,70,.1);
+    }
+    .form-input::placeholder,
+    .form-textarea::placeholder { color: var(--c-text-mute); }
+    .form-select option { background: var(--c-surface); }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 150px;
+      line-height: 1.65;
+    }
+
+    /* Checkbox RGPD */
+    .form-check {
+      display: flex;
+      align-items: flex-start;
+      gap: .75rem;
+      cursor: pointer;
+    }
+    .form-check input[type="checkbox"] {
+      margin-top: 3px;
+      accent-color: var(--c-accent);
+      flex-shrink: 0;
+    }
+    .form-check-text {
+      color: var(--c-text-mute);
+      font-size: .875rem;
+      line-height: 1.6;
+    }
+
+    /* Zone submit + confirmation */
+    .form-submit-wrap {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    #form-success {
+      display: none;
+      padding: .9rem 1.4rem;
+      background: rgba(50,200,100,.08);
+      border: 1px solid rgba(50,200,100,.28);
+      border-radius: var(--r-sm);
+      color: #50c864;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: .875rem;
+    }
+
+    /* ── Colonne infos ── */
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .info-block {
+      background: var(--c-surface);
+      border: 1px solid var(--c-border);
+      border-radius: var(--r-md);
+      padding: 1.75rem;
+    }
+
+    .info-block-title {
+      font-family: var(--font-heading);
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--c-accent);
+      margin-bottom: 1.1rem;
+    }
+
+    .info-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: .75rem;
+      font-size: .9rem;
+      color: var(--c-text-mute);
+    }
+    .info-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: rgba(230,57,70,.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .95rem;
+      flex-shrink: 0;
+    }
+    .info-item-label {
+      color: var(--c-text);
+      display: block;
+      font-weight: 600;
+      margin-bottom: .2rem;
+      font-size: .875rem;
+    }
+    .info-item a {
+      color: var(--c-text-mute);
+      transition: color .2s;
+    }
+    .info-item a:hover { color: var(--c-accent); }
+
+    /* Réseaux sociaux */
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: .75rem;
+    }
+    .social-card {
+      background: var(--c-bg3);
+      border: 1px solid var(--c-border);
+      border-radius: var(--r-sm);
+      padding: 1rem .75rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .5rem;
+      text-align: center;
+      transition: border-color .2s, transform .2s var(--ease-out);
+    }
+    .social-card:hover {
+      border-color: var(--c-accent);
+      transform: translateY(-3px);
+    }
+    .social-card svg {
+      width: 22px;
+      height: 22px;
+      color: var(--c-accent);
+    }
+    .social-card span {
+      font-size: .7rem;
+      color: var(--c-text-mute);
+      font-family: var(--font-heading);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    /* Info équipe */
+    .info-team-text {
+      color: var(--c-text-mute);
+      font-size: .9rem;
+      line-height: 1.7;
+      margin-bottom: 1.25rem;
+    }
+    .info-team-text strong { color: var(--c-white); }
+
+    .info-block .btn {
+      font-size: .875rem;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 1024px) {
+      .contact-layout { grid-template-columns: 1fr 360px; gap: 3rem; }
+    }
+    @media (max-width: 900px) {
+      .contact-layout { grid-template-columns: 1fr; }
+      .contact-info { order: -1; }
+    }
+    @media (max-width: 600px) {
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- SVG filter definitions — grit wipe menu -->
+<svg class="svg-defs" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id="grit-filter" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.014" numOctaves="4" seed="3" stitchTiles="stitch" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="140" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+</svg>
+
+<!-- ============================================================
+     NAVIGATION — identique a index.html
+============================================================ -->
+<header id="site-header">
+  <a href="index.html" class="pf-logo" aria-label="Accueil">
+    <img src="logo.svg" alt="2B Rallye Team" />
+  </a>
+  <button class="pf-burger" id="pf-burger" aria-label="Ouvrir le menu" aria-expanded="false">
+    <span class="burger-line"></span>
+    <span class="burger-line"></span>
+  </button>
+</header>
+
+<!-- Menu overlay plein ecran -->
+<div class="pf-menu-overlay" id="pf-menu" aria-hidden="true">
+  <div class="grit-wipe-wrap" aria-hidden="true">
+    <div class="grit-wipe"></div>
+  </div>
+  <nav class="pf-menu-inner">
+    <ul class="pf-menu-links">
+      <li><a href="index.html"        class="pf-mlink" data-idx="1">Accueil</a></li>
+      <li><a href="index.html#team"   class="pf-mlink" data-idx="2">Equipe</a></li>
+      <li><a href="index.html#saison" class="pf-mlink" data-idx="3">Saison 2026</a></li>
+      <li><a href="sponsors.html"     class="pf-mlink" data-idx="4">Sponsors</a></li>
+      <li><a href="boutique.html"     class="pf-mlink" data-idx="5">Boutique</a></li>
+      <li><a href="contact.html"      class="pf-mlink" data-idx="6">Contact</a></li>
+    </ul>
+    <div class="pf-menu-footer">
+      <span>Saison 2026 — Championnat Rhone-Alpes</span>
+    </div>
+  </nav>
+</div>
+
+<!-- ============================================================
+     PAGE HERO
+============================================================ -->
+<header class="page-hero">
+  <div class="container page-hero-content">
+    <span class="section-tag">Ecrivez-nous</span>
+    <h1 class="page-title">Nous<br/><span class="accent">Contacter</span></h1>
+  </div>
+</header>
+
+<!-- ============================================================
+     CONTACT
+============================================================ -->
+<section class="page-section">
+  <div class="container">
+    <div class="contact-layout">
+
+      <!-- ── FORMULAIRE ── -->
+      <div>
+        <div class="form-header reveal">
+          <span class="section-tag">Formulaire</span>
+          <h2 class="section-title">Envoyez-nous<br/>un message</h2>
+          <p>Pour toute demande de partenariat, demande presse ou message de soutien, remplissez ce formulaire. Nous vous repondrons dans les 48h.</p>
+        </div>
+
+        <form
+          class="contact-form reveal"
+          id="contact-form"
+          novalidate
+          onsubmit="handleContactForm(event)"
+        >
+          <div class="form-row">
+            <div class="form-group">
+              <label for="cf-prenom" class="form-label">
+                Prenom <span class="required">*</span>
+              </label>
+              <input
+                id="cf-prenom"
+                type="text"
+                class="form-input"
+                placeholder="Jean"
+                required
+                autocomplete="given-name"
+              />
+            </div>
+            <div class="form-group">
+              <label for="cf-nom" class="form-label">
+                Nom <span class="required">*</span>
+              </label>
+              <input
+                id="cf-nom"
+                type="text"
+                class="form-input"
+                placeholder="Dupont"
+                required
+                autocomplete="family-name"
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="cf-email" class="form-label">
+              Email <span class="required">*</span>
+            </label>
+            <input
+              id="cf-email"
+              type="email"
+              class="form-input"
+              placeholder="jean.dupont@email.fr"
+              required
+              autocomplete="email"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="cf-tel" class="form-label">Telephone (optionnel)</label>
+            <input
+              id="cf-tel"
+              type="tel"
+              class="form-input"
+              placeholder="+33 6 XX XX XX XX"
+              autocomplete="tel"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="cf-sujet" class="form-label">
+              Sujet <span class="required">*</span>
+            </label>
+            <select id="cf-sujet" class="form-select" required>
+              <option value="" disabled selected>Selectionnez un sujet...</option>
+              <option value="partenariat">Partenariat / Sponsoring</option>
+              <option value="presse">Demande presse / Medias</option>
+              <option value="boutique">Boutique / Commande</option>
+              <option value="soutien">Message de soutien</option>
+              <option value="autre">Autre</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="cf-msg" class="form-label">
+              Message <span class="required">*</span>
+            </label>
+            <textarea
+              id="cf-msg"
+              class="form-textarea"
+              placeholder="Votre message..."
+              required
+              rows="6"
+            ></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-check">
+              <input type="checkbox" required />
+              <span class="form-check-text">
+                J'accepte que mes donnees soient utilisees uniquement pour traiter ma demande
+                et etre recontacte par la 2B Rallye Team.
+              </span>
+            </label>
+          </div>
+
+          <div class="form-submit-wrap">
+            <button type="submit" class="btn btn-primary btn-lg">
+              Envoyer le message
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/>
+              </svg>
+            </button>
+            <div id="form-success" role="status">
+              ✓ Message envoye ! Merci, nous vous repondrons bientot.
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- ── INFOS ── -->
+      <aside class="contact-info reveal" data-delay="2">
+
+        <!-- Coordonnees -->
+        <div class="info-block">
+          <p class="info-block-title">Coordonnees</p>
+          <ul class="info-list">
+            <li class="info-item">
+              <span class="info-icon">📧</span>
+              <div>
+                <span class="info-item-label">Email</span>
+                <a href="mailto:contact@equipe-belda-barbotin.fr">
+                  contact@equipe-belda-barbotin.fr
+                </a>
+              </div>
+            </li>
+            <li class="info-item">
+              <span class="info-icon">📍</span>
+              <div>
+                <span class="info-item-label">Basee en</span>
+                Rhone-Alpes, France
+              </div>
+            </li>
+            <li class="info-item">
+              <span class="info-icon">⏱</span>
+              <div>
+                <span class="info-item-label">Delai de reponse</span>
+                Sous 48h ouvrees
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Reseaux sociaux -->
+        <div class="info-block">
+          <p class="info-block-title">Reseaux sociaux</p>
+          <div class="social-grid">
+            <a href="#" class="social-card" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+              <span>Instagram</span>
+            </a>
+            <a href="#" class="social-card" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              <span>Facebook</span>
+            </a>
+            <a href="#" class="social-card" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+              <span>YouTube</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- A propos -->
+        <div class="info-block">
+          <p class="info-block-title">L'equipe</p>
+          <p class="info-team-text">
+            <strong>Enzo Belda</strong> (pilote) et
+            <strong>Louis-Valentin Barbotin</strong> (copilote)
+            forment un duo engage dans le Championnat Regional Rhone-Alpes
+            pour la saison 2026, avec 5 rallyes sur les routes alpines.
+          </p>
+          <a href="index.html#team" class="btn btn-outline">
+            En savoir plus
+          </a>
+        </div>
+
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer id="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="logo.svg" alt="Logo Equipe" />
+        <p>Equipe de rallye Rhone-Alpes<br/>Saison 2026</p>
+      </div>
+      <nav class="footer-nav" aria-label="Navigation pied de page">
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="index.html#team">Equipe</a></li>
+          <li><a href="index.html#saison">Saison 2026</a></li>
+          <li><a href="sponsors.html">Sponsors</a></li>
+          <li><a href="boutique.html">Boutique</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram" class="social-link">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </a>
+        <a href="#" aria-label="Facebook" class="social-link">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 2B Rallye Team. Tous droits reserves.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /**
+   * Formulaire de contact — front-end uniquement.
+   * Pour une vraie soumission, connectez à Formspree, EmailJS ou un backend.
+   */
+  function handleContactForm(e) {
+    e.preventDefault();
+    const form = document.getElementById('contact-form');
+    const msg  = document.getElementById('form-success');
+    const btn  = form.querySelector('button[type="submit"]');
+
+    btn.disabled    = true;
+    btn.textContent = 'Envoi en cours...';
+
+    setTimeout(() => {
+      form.reset();
+      btn.style.display = 'none';
+      if (msg) msg.style.display = 'block';
+    }, 800);
+  }
+</script>
+<script src="js/main.js" defer></script>
+</body>
+</html>

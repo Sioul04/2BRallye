@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2B Rallye Team — Saison 2026</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <meta name="description" content="Site officiel de l'equipe de rallye 2B Rallye Team — Saison 2026." />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="2B Rallye Team — Saison 2026" />
+  <meta property="og:description" content="Site officiel de la 2B Rallye Team — Enzo Belda et Louis-Valentin Barbotin, Championnat Regional Rhone-Alpes 2026." />
+  <meta property="og:image" content="logo.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#040405" />
+
+  <!-- ===== PRELOAD ===== -->
+  <link rel="preload" href="css/style.css" as="style" />
+  <link rel="preload" href="js/main.js" as="script" />
+
+  <!-- ===== FONTS ===== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Exo+2:ital,wght@0,300;0,400;0,700;0,900;1,400&display=swap" rel="stylesheet" />
+
+  <!-- ===== STYLES ===== -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+</head>
+<body>
+
+<!-- SVG filter definitions — gritty wipe effect -->
+<svg class="svg-defs" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id="grit-filter" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.014" numOctaves="4" seed="3" stitchTiles="stitch" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="140" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+</svg>
+
+<!-- ============================================================
+     NAVIGATION — Logo fixe haut-gauche / Burger haut-droite
+============================================================ -->
+<header id="site-header">
+  <a href="index.html" class="pf-logo" aria-label="Accueil">
+    <img src="logo.svg" alt="2B Rallye Team" />
+  </a>
+  <button class="pf-burger" id="pf-burger" aria-label="Ouvrir le menu" aria-expanded="false">
+    <span class="burger-line"></span>
+    <span class="burger-line"></span>
+  </button>
+</header>
+
+<!-- Menu overlay plein ecran -->
+<div class="pf-menu-overlay" id="pf-menu" aria-hidden="true">
+  <div class="grit-wipe-wrap" aria-hidden="true">
+    <div class="grit-wipe"></div>
+  </div>
+  <nav class="pf-menu-inner">
+    <ul class="pf-menu-links">
+      <li><a href="#section-hero"  class="pf-mlink" data-idx="1">Accueil</a></li>
+      <li><a href="#team"          class="pf-mlink" data-idx="2">Equipe</a></li>
+      <li><a href="#saison"        class="pf-mlink" data-idx="3">Saison 2026</a></li>
+      <li><a href="sponsors.html"  class="pf-mlink" data-idx="4">Sponsors</a></li>
+      <li><a href="boutique.html"  class="pf-mlink" data-idx="5">Boutique</a></li>
+      <li><a href="contact.html"   class="pf-mlink" data-idx="6">Contact</a></li>
+    </ul>
+    <div class="pf-menu-footer">
+      <span>Saison 2026 — Championnat Rhone-Alpes</span>
+    </div>
+  </nav>
+</div>
+
+<!-- ============================================================
+     HERO — Parallaxe multi-couches
+============================================================ -->
+<section id="section-hero" class="hero-parallax">
+
+  <!-- Couches parallaxes 3D (translate3d pilote par JS via data-layer) -->
+  <!-- Ordre : du plus loin (ciel) au plus proche (poussiere) -->
+  <div class="px-layer" data-layer="sky"      aria-hidden="true"></div>
+  <div class="px-layer" data-layer="mountain" aria-hidden="true"></div>
+  <div class="px-layer" data-layer="greenery" aria-hidden="true"></div>
+  <div class="px-layer" data-layer="road"     aria-hidden="true"></div>
+  <div class="px-layer" data-layer="car"      aria-hidden="true"></div>
+  <div class="px-layer" data-layer="dust"     aria-hidden="true"></div>
+
+  <!-- Overlay sombre au-dessus de tous les calques PNG -->
+  <div class="px-dark-overlay" aria-hidden="true"></div>
+
+  <!-- Vignette & grain (pas de parallaxe — fixes dans la section) -->
+  <div class="px-vignette" aria-hidden="true"></div>
+  <div class="hero-grain"  aria-hidden="true"></div>
+
+  <!-- Grand numero decoratif en arriere-plan -->
+  <span class="hero-bignumber" aria-hidden="true">2B</span>
+
+  <!-- Barre d'info haut gauche -->
+  <div class="hero-topbar hero-anim" data-delay="0" aria-hidden="true">
+    <span>Saison 2026</span>
+    <span class="htb-dot">·</span>
+    <span>Championnat Rhone-Alpes</span>
+  </div>
+
+  <!-- ── Contenu principal — bas gauche ── -->
+  <div class="hero-content">
+    <p class="hero-eyebrow hero-anim" data-delay="1">Equipe de Rallye</p>
+    <h1 class="hero-title hero-anim" data-delay="2">
+      2B<br/><span class="ht-blue">Rallye</span><br/><span class="ht-accent">Team</span>
+    </h1>
+    <p class="hero-subtitle hero-anim" data-delay="3">
+      Enzo Belda &nbsp;&middot;&nbsp; Louis-Valentin Barbotin
+    </p>
+    <a href="#team" class="btn btn-primary hero-anim" data-delay="4">
+      Decouvrir l'equipe
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </a>
+  </div>
+
+  <!-- Indicateur de scroll — bas centre-gauche -->
+  <div class="hero-scroll hero-anim" data-delay="5" aria-hidden="true">
+    <div class="hs-line"></div>
+    <span>Defiler</span>
+  </div>
+
+  <!-- Stats — bas droite -->
+  <aside class="hero-stats" aria-label="Statistiques equipe">
+    <div class="stat hero-anim" data-delay="3">
+      <span class="stat-num" data-target="5">5</span>
+      <span class="stat-label">Rallyes</span>
+    </div>
+    <div class="stat hero-anim" data-delay="4">
+      <span class="stat-num">2026</span>
+      <span class="stat-label">Saison</span>
+    </div>
+  </aside>
+
+  <!-- Reseaux sociaux — bas droite -->
+  <div class="hero-social" aria-label="Reseaux sociaux">
+    <a href="#" class="hs-link" aria-label="Instagram de l'equipe">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+    </a>
+    <a href="#" class="hs-link" aria-label="Facebook de l'equipe">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+    </a>
+    <a href="#" class="hs-link" aria-label="YouTube de l'equipe">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+    </a>
+  </div>
+
+</section>
+
+<!-- ============================================================
+     TEAM — Pilote & Copilote
+============================================================ -->
+<section id="team" class="section-team">
+  <div class="container">
+
+    <div class="section-header reveal">
+      <span class="section-tag">L'equipe</span>
+      <h2 class="section-title">Pilote et copilote, <br/>une seule vision</h2>
+    </div>
+
+    <div class="team-grid">
+
+      <!-- Pilote -->
+      <article class="team-card reveal" data-member="pilote">
+        <div class="card-visual">
+          <div class="card-img-wrap">
+            <img src="pilote.jpg"
+                 alt="Portrait Enzo Belda, pilote"
+                 loading="lazy"
+                 onerror="this.closest('.card-img-wrap').classList.add('img-placeholder')" />
+            <span class="img-caption">Image d'illustration</span>
+          </div>
+          <div class="card-role">Pilote</div>
+        </div>
+        <div class="card-info">
+          <h3 class="card-name">Enzo <strong>BELDA</strong></h3>
+          <p class="card-bio">
+            Au volant depuis l'adolescence, Enzo Belda apporte une precision chirurgicale
+            dans les virages de montagne. Son engagement total et sa lecture du parcours
+            font de lui un concurrent redoutable sur l'asphalte alpin.
+          </p>
+          <ul class="card-stats" aria-label="Statistiques pilote">
+            <li><span class="cs-label">Specialite</span><span class="cs-val">Asphalte montagne</span></li>
+            <li><span class="cs-label">Region</span><span class="cs-val">Rhone-Alpes</span></li>
+            <li><span class="cs-label">Saisons</span><span class="cs-val">2026</span></li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- Copilote -->
+      <article class="team-card reveal" data-member="copilote">
+        <div class="card-visual">
+          <div class="card-img-wrap">
+            <img src="copilote.jpg"
+                 alt="Portrait Louis-Valentin Barbotin, copilote"
+                 loading="lazy"
+                 onerror="this.closest('.card-img-wrap').classList.add('img-placeholder')" />
+            <span class="img-caption">Image d'illustration</span>
+          </div>
+          <div class="card-role">Copilote</div>
+        </div>
+        <div class="card-info">
+          <h3 class="card-name">Louis-Valentin <strong>BARBOTIN</strong></h3>
+          <p class="card-bio">
+            La voix calme dans l'habitacle, Louis-Valentin Barbotin transforme chaque
+            roadbook en partition musicale. Sa precision aux notes et son anticipation des
+            epingles sont les armes secretes de l'equipe dans les etapes de haute montagne.
+          </p>
+          <ul class="card-stats" aria-label="Statistiques copilote">
+            <li><span class="cs-label">Specialite</span><span class="cs-val">Lecture de route</span></li>
+            <li><span class="cs-label">Region</span><span class="cs-val">Rhone-Alpes</span></li>
+            <li><span class="cs-label">Saisons</span><span class="cs-val">2026</span></li>
+          </ul>
+        </div>
+      </article>
+
+    </div><!-- /team-grid -->
+  </div><!-- /container -->
+</section>
+
+
+<!-- ============================================================
+     SAISON 2026 — 5 Rallyes
+============================================================ -->
+<section id="saison" class="section-saison">
+  <div class="container">
+
+    <div class="section-header reveal">
+      <span class="section-tag">Programme</span>
+      <h2 class="section-title">Saison <span class="accent">2026</span></h2>
+      <p class="section-lead">
+        Cinq rendez-vous sur les routes mythiques des Alpes, chaque rallye un nouveau defi.
+      </p>
+    </div>
+
+    <!-- Timeline verticale -->
+    <div class="rallye-timeline">
+
+      <!-- ===== RALLYE 1 : Faverges ===== -->
+      <article class="rallye-item reveal" data-index="1">
+        <div class="rallye-marker">
+          <span class="rallye-num">01</span>
+          <div class="timeline-line" aria-hidden="true"></div>
+        </div>
+        <div class="rallye-card">
+          <div class="rallye-img-wrap">
+            <img src="assets/images/rallye1.jpg"
+                 alt="Rallye du Pays de Faverges 2026"
+                 loading="lazy"
+                 onerror="this.closest('.rallye-img-wrap').classList.add('img-placeholder')" />
+            <div class="rallye-img-overlay">
+              <span class="rallye-date-badge">3–4 Avril 2026</span>
+            </div>
+          </div>
+          <div class="rallye-body">
+            <div class="rallye-meta">
+              <span class="rallye-level level-regional">Regional</span>
+              <span class="rallye-surface">🏔 Asphalte</span>
+            </div>
+            <h3 class="rallye-title">Rallye du Pays de Faverges</h3>
+            <p class="rallye-location">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Faverges-Seythenex, Haute-Savoie (74)
+            </p>
+            <p class="rallye-desc">
+              <strong>40ᵉ edition.</strong> Organise par l'ASAC Mont-Blanc autour du massif
+              sud-est du lac d'Annecy, ce rallye historique reunit la competition moderne
+              et la categorie VHC (Mont-Blanc Historique, 19ᵉ edition). Le trace de
+              <strong>110,26 km</strong> totalise <strong>5 speciales pour 39,64 km
+              chronometres</strong> sur les routes alpines du Col de l'Epine, de Seythenex
+              et des Esserieux. Une epreuve comptant pour le
+              <em>Championnat Regional Rhone-Alpes</em>, ainsi que pour les championnats
+              VHC, VHRS et VMRS.
+            </p>
+            <ul class="rallye-facts">
+              <li><strong>Surface :</strong> Asphalte 100 %</li>
+              <li><strong>Speciales :</strong> 5 ES — 39,64 km</li>
+              <li><strong>Championnat :</strong> Regional Rhone-Alpes + VHC</li>
+              <li><strong>Reconnaissances :</strong> 29 mars et 3 avril 2026</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- ===== RALLYE 2 : Savoie Chautagne ===== -->
+      <article class="rallye-item reveal" data-index="2">
+        <div class="rallye-marker">
+          <span class="rallye-num">02</span>
+          <div class="timeline-line" aria-hidden="true"></div>
+        </div>
+        <div class="rallye-card">
+          <div class="rallye-img-wrap">
+            <img src="assets/images/rallye2.jpg"
+                 alt="Rallye du Pays de Seyssel et de Chautagne 2026"
+                 loading="lazy"
+                 onerror="this.closest('.rallye-img-wrap').classList.add('img-placeholder')" />
+            <div class="rallye-img-overlay">
+              <span class="rallye-date-badge">22–23 Mai 2026</span>
+            </div>
+          </div>
+          <div class="rallye-body">
+            <div class="rallye-meta">
+              <span class="rallye-level level-national">National</span>
+              <span class="rallye-surface">🏔 Asphalte</span>
+            </div>
+            <h3 class="rallye-title">Rallye du Pays de Seyssel et de Chautagne</h3>
+            <p class="rallye-location">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Serrieres-en-Chautagne, Savoie (73)
+            </p>
+            <p class="rallye-desc">
+              <strong>11ᵉ edition — Rallye National.</strong> Anciennement "&nbsp;Rallye de
+              Savoie Chautagne&nbsp;", rebaptise en 2026, cet evenement de niveau national
+              est l'un des plus ambitieux du calendrier regional avec
+              <strong>9 speciales et 118,86 km chronometres</strong> sur 357 km de liaison.
+              Compte pour la <em>Coupe de France des Rallyes</em> et la <em>Hankook Rally Cup 2026</em>.
+            </p>
+            <ul class="rallye-facts">
+              <li><strong>Surface :</strong> Asphalte 100 %</li>
+              <li><strong>Speciales :</strong> 9 ES — 118,86 km</li>
+              <li><strong>Championnat :</strong> Coupe de France + Hankook Rally Cup</li>
+              <li><strong>Categories :</strong> Rally2, Rally3, VHC, VHRS, VMRS</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- ===== RALLYE 3 : Trieves ===== -->
+      <article class="rallye-item reveal" data-index="3">
+        <div class="rallye-marker">
+          <span class="rallye-num">03</span>
+          <div class="timeline-line" aria-hidden="true"></div>
+        </div>
+        <div class="rallye-card">
+          <div class="rallye-img-wrap">
+            <img src="assets/images/rallye3.jpg"
+                 alt="Rallye du Trieves 2026"
+                 loading="lazy"
+                 onerror="this.closest('.rallye-img-wrap').classList.add('img-placeholder')" />
+            <div class="rallye-img-overlay">
+              <span class="rallye-date-badge">31 Juil – 1 Aout 2026</span>
+            </div>
+          </div>
+          <div class="rallye-body">
+            <div class="rallye-meta">
+              <span class="rallye-level level-regional">Regional</span>
+              <span class="rallye-surface">🏔 Asphalte</span>
+            </div>
+            <h3 class="rallye-title">Rallye du Trieves</h3>
+            <p class="rallye-location">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Mens, Isere (38)
+            </p>
+            <p class="rallye-desc">
+              <strong>40ᵉ edition anniversaire.</strong> Niche sur le plateau du Trieves a
+              900 m d'altitude, entre le Vercors et le Devoluy. Le parcours de
+              <strong>153,37 km</strong> repartit <strong>6 speciales (39,82 km chronometres)</strong>
+              en trois secteurs. Compte pour le <em>Championnat Regional Rhone-Alpes</em>.
+            </p>
+            <ul class="rallye-facts">
+              <li><strong>Surface :</strong> Asphalte 100 %</li>
+              <li><strong>Speciales :</strong> 6 ES — 39,82 km</li>
+              <li><strong>Championnat :</strong> Regional Rhone-Alpes + VHC</li>
+              <li><strong>Depart :</strong> 1ᵉʳ aout 16h20, Mens (38710)</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- ===== RALLYE 4 : Chartreuse ===== -->
+      <article class="rallye-item reveal" data-index="4">
+        <div class="rallye-marker">
+          <span class="rallye-num">04</span>
+          <div class="timeline-line" aria-hidden="true"></div>
+        </div>
+        <div class="rallye-card">
+          <div class="rallye-img-wrap">
+            <img src="assets/images/rallye4.jpg"
+                 alt="Rallye de Chartreuse 2026"
+                 loading="lazy"
+                 onerror="this.closest('.rallye-img-wrap').classList.add('img-placeholder')" />
+            <div class="rallye-img-overlay">
+              <span class="rallye-date-badge">Fin Aout 2026</span>
+            </div>
+          </div>
+          <div class="rallye-body">
+            <div class="rallye-meta">
+              <span class="rallye-level level-coupe">Coupe de France</span>
+              <span class="rallye-surface">🌲 Asphalte</span>
+            </div>
+            <h3 class="rallye-title">Rallye de Chartreuse</h3>
+            <p class="rallye-location">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Saint-Laurent-du-Pont, Isere (38)
+            </p>
+            <p class="rallye-desc">
+              <strong>32ᵉ edition</strong> au coeur du Parc Naturel Regional de Chartreuse.
+              <strong>6 speciales pour environ 39 km chronometres</strong>
+              sur 237 km de parcours total. Compte pour la
+              <em>Coupe de France des Rallyes</em> et le <em>Championnat Regional Rhone-Alpes</em>.
+            </p>
+            <ul class="rallye-facts">
+              <li><strong>Surface :</strong> Asphalte 100 %</li>
+              <li><strong>Speciales :</strong> 6 ES — ~39 km</li>
+              <li><strong>Championnat :</strong> Coupe de France des Rallyes + Regional</li>
+              <li><strong>Categories :</strong> Rally2, Rally3, Alpine, VHC</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- ===== RALLYE 5 : Bauges ===== -->
+      <article class="rallye-item reveal" data-index="5">
+        <div class="rallye-marker">
+          <span class="rallye-num">05</span>
+        </div>
+        <div class="rallye-card">
+          <div class="rallye-img-wrap">
+            <img src="assets/images/rallye5.jpg"
+                 alt="Rallye des Bauges 2026"
+                 loading="lazy"
+                 onerror="this.closest('.rallye-img-wrap').classList.add('img-placeholder')" />
+            <div class="rallye-img-overlay">
+              <span class="rallye-date-badge">10–11 Octobre 2026</span>
+            </div>
+          </div>
+          <div class="rallye-body">
+            <div class="rallye-meta">
+              <span class="rallye-level level-regional">Regional</span>
+              <span class="rallye-surface">🍂 Asphalte</span>
+            </div>
+            <h3 class="rallye-title">Rallye des Bauges</h3>
+            <p class="rallye-location">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Aillon-le-Jeune, Savoie (73)
+            </p>
+            <p class="rallye-desc">
+              <strong>41ᵉ edition.</strong> Organise par l'ASAC de Savoie et Sport Auto Bauges,
+              ce rallye automnal compte <strong>7 speciales pour ~40 km chronometres</strong>
+              sur ~210 km de parcours dans le massif des Bauges. Compte pour le
+              <em>Championnat Regional Rhone-Alpes</em> et le <em>Championnat Regional VHC</em>.
+            </p>
+            <ul class="rallye-facts">
+              <li><strong>Surface :</strong> Asphalte 100 %</li>
+              <li><strong>Speciales :</strong> 7 ES — ~40 km</li>
+              <li><strong>Championnat :</strong> Regional Rhone-Alpes + VHC</li>
+              <li><strong>Cloture inscriptions :</strong> 28 septembre 2026</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+    </div><!-- /rallye-timeline -->
+  </div><!-- /container -->
+</section>
+
+<!-- ============================================================
+     GALERIE
+============================================================ -->
+<section id="galerie" class="section-galerie">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">En images</span>
+      <h2 class="section-title">Galerie</h2>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item reveal gi-large">
+        <img src="assets/images/rallye1.jpg" alt="Action rallye 2026" loading="lazy"
+             onerror="this.closest('.gallery-item').classList.add('img-placeholder')" />
+      </div>
+      <div class="gallery-item reveal">
+        <img src="assets/images/rallye2.jpg" alt="Speciale alpine" loading="lazy"
+             onerror="this.closest('.gallery-item').classList.add('img-placeholder')" />
+      </div>
+      <div class="gallery-item reveal">
+        <img src="assets/images/rallye3.jpg" alt="Passage en foret" loading="lazy"
+             onerror="this.closest('.gallery-item').classList.add('img-placeholder')" />
+      </div>
+      <div class="gallery-item reveal">
+        <img src="assets/images/rallye4.jpg" alt="Dans les Bauges" loading="lazy"
+             onerror="this.closest('.gallery-item').classList.add('img-placeholder')" />
+      </div>
+      <div class="gallery-item reveal gi-large">
+        <img src="assets/images/rallye5.jpg" alt="Arrivee et podium" loading="lazy"
+             onerror="this.closest('.gallery-item').classList.add('img-placeholder')" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CALL TO ACTION — Sponsors
+============================================================ -->
+<section class="section-cta reveal">
+  <div class="container">
+    <div class="cta-inner">
+      <span class="section-tag">Partenariat</span>
+      <h2>Rejoignez l'aventure</h2>
+      <p>Votre marque associee a la performance et aux paysages alpins les plus spectaculaires.</p>
+      <a href="sponsors.html" class="btn btn-primary btn-lg">Devenir partenaire</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer id="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="logo.svg" alt="Logo Equipe" />
+        <p>Equipe de rallye Rhone-Alpes<br/>Saison 2026</p>
+      </div>
+      <nav class="footer-nav" aria-label="Navigation pied de page">
+        <ul>
+          <li><a href="#section-hero">Accueil</a></li>
+          <li><a href="#team">Equipe</a></li>
+          <li><a href="#saison">Saison 2026</a></li>
+          <li><a href="sponsors.html">Sponsors</a></li>
+          <li><a href="boutique.html">Boutique</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram de l'equipe" class="social-link">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </a>
+        <a href="#" aria-label="Facebook de l'equipe" class="social-link">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+        <a href="#" aria-label="YouTube de l'equipe" class="social-link">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 2B Rallye Team. Tous droits reserves.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     SCRIPTS
+============================================================ -->
+<script src="js/main.js" defer></script>
+
+</body>
+</html>
